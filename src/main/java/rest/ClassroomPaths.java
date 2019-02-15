@@ -47,6 +47,13 @@ public class ClassroomPaths {
 	public String deleteClassroom(@PathParam("id") Long id) {
 		return service.deleteClassroom(id);
 	}
+	
+	@Path("/deleteTrainee/{id}")
+	@DELETE
+	@Produces({ "application/json" })
+	public String deleteTrainee(@PathParam("id") Long id) {
+		return service.delTrainee(id);
+	}
 
 	public void setService(ClassroomService service2) {
 		this.service = service2;

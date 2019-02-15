@@ -36,9 +36,9 @@ public class RepoTest {
 	
 	private JSONUtil util;
 	
-	private static final String MOCK_OBJECT = "{\"trainer\":\"Alice\"}";
+	private static final String MOCK_OBJECT = "{\"trainer\":\"Alice\",\"trainees\":[]}";
 	private static final String MOCK_OBJECT2 = "{\"traineeName\":\"Alice\"}";
-	private static final String MOCK_ARRAY = "[{\"trainer\":\"Alice\"}]";
+	private static final String MOCK_ARRAY = "[{\"trainer\":\"Alice\",\"trainees\":[]}]";
 	private static final String MOCK_ARRAY2 = "[{\"traineeName\":\"Alice\"}]";
 	
 	@Before

@@ -31,4 +31,9 @@ public class ClassroomService implements ServiceImpl{
 		return repo.getAllTrainees();
 	}
 
+	@Override
+	public String delTrainee(Long id) {
+		return repo.delTrainee(id);
+	}
+
 }
