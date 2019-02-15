@@ -1,11 +1,13 @@
 package persist.domain;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+@Entity
 public class Trainee {
 	
 
@@ -13,16 +15,15 @@ public class Trainee {
 	@Id
 	private Long traineeID;
 	private String traineeName;
-	@ManyToOne
-	@JoinColumn(name = "classroomID")
-	private Classroom classroom;
+	private Long classroomID;
 	
 	public Trainee() {
 		
 	}
 	
-	public Trainee(String name) {
+	public Trainee(Classroom room, String name) {
 		this.traineeName = name;
+		this.classroomID = room.getClassroomID();
 	}
 
 	public Long getTraineeID() {

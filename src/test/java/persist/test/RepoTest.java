@@ -36,9 +36,9 @@ public class RepoTest {
 	
 	private JSONUtil util;
 	
-	private static final String MOCK_OBJECT = "{\"trainer\":\"Alice\"}";
+	private static final String MOCK_OBJECT = "{\"trainer\":\"Alice\",\"trainees\":[]}";
 	private static final String MOCK_OBJECT2 = "{\"traineeName\":\"Alice\"}";
-	private static final String MOCK_ARRAY = "[{\"trainer\":\"Alice\"}]";
+	private static final String MOCK_ARRAY = "[{\"trainer\":\"Alice\",\"trainees\":[]}]";
 	private static final String MOCK_ARRAY2 = "[{\"traineeName\":\"Alice\"}]";
 	
 	@Before
@@ -49,9 +49,12 @@ public class RepoTest {
 	}
 	
 	@Test
-	public void testCreateMovie() {
+	public void testCreateRoom() {
 		String reply = repo.makeClassroom(MOCK_OBJECT);
 		Assert.assertEquals(reply, "Classroom made.");
+		Classroom room = new Classroom("Bert");
+		
+		Trainee t = new Trainee(room,"Tina");
 	}
 	
 	@Test
@@ -68,7 +71,8 @@ public class RepoTest {
 	public void getAllTraineeTest() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Trainee> rooms = new ArrayList<Trainee>();
-		rooms.add(new Trainee("Alice"));
+		Classroom room = new Classroom();
+		rooms.add(new Trainee(room, "Alice"));
 		Mockito.when(query.getResultList()).thenReturn(rooms);
 		Assert.assertEquals(MOCK_ARRAY2, repo.getAllClassrooms());	
 		

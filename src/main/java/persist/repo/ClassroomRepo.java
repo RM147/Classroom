@@ -9,6 +9,8 @@ public interface ClassroomRepo {
 	String deleteClassroom(Long id);
 	String makeClassroom(String classroom);
 	String getAllTrainees();
+	String delTrainee(Long id);
+	String addTrainee(Classroom room, String name);
 	
 
 }
