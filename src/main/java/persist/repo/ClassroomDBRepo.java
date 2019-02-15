@@ -5,6 +5,7 @@ import static javax.transaction.Transactional.TxType.SUPPORTS;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -38,41 +39,38 @@ public class ClassroomDBRepo implements ClassroomRepo {
 	@Inject
 	private JSONUtil util;
 
-	@Transactional(REQUIRED)
-	public String addTrainee(Classroom room, String name) {
-		Trainee aTrainee =  new Trainee("Josh");
-		System.out.println(util.getJSONForObject(aTrainee));
-		//Trainee aTrainee = util.getObjectForJSON(name, Trainee.class);
-		//room.getTrainees().add(aTrainee);
-		return aTrainee.getTraineeName() + " has been added.";
-	}
-
-	public String getAllTrainees() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String getATrainee(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String updateTrainee(Long id, String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String deleteTrainee(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public void setManager(EntityManager manager) {
 		this.manager = manager;
 	}
 
 	public void setUtil(JSONUtil util) {
 		this.util = util;
+	}
+
+	public String makeClassroom(String classroom) {
+		Classroom room = util.getObjectForJSON(classroom, Classroom.class);
+		manager.persist(room);
+		return "Classroom made.";
+	}
+
+	public String getAllClassrooms() {
+		Query query = manager.createQuery("Select c FROM Classroom c");
+		Collection<Classroom> movies = (Collection<Classroom>) query.getResultList();
+
+		return util.getJSONForObject(movies);
+	}
+
+	public String updateClassroom() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String deleteClassroom(Long id) {
+		if (manager.contains(manager.find(Classroom.class, id))) {
+
+			manager.remove(manager.find(Classroom.class, id));
+		}
+		return "{\"message\": \"movie sucessfully deleted\"}";
 	}
 
 }

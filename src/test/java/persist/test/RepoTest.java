@@ -2,6 +2,9 @@ package persist.test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
@@ -33,6 +36,9 @@ public class RepoTest {
 	
 	private JSONUtil util;
 	
+	private static final String MOCK_OBJECT = "{\"trainer\":\"Alice\"}";
+	private static final String MOCK_ARRAY = "[{\"trainer\":\"Alice\"}]";
+	
 	@Before
 	public void setup() {
 		repo.setManager(manager);
@@ -41,10 +47,25 @@ public class RepoTest {
 	}
 	
 	@Test
-	public void addTraineeTest() {
-		Classroom room = new Classroom("Jenny");
-		assertEquals("Josh has been added.", repo.addTrainee(room, "Josh"));
+	public void testCreateMovie() {
+		String reply = repo.makeClassroom(MOCK_OBJECT);
+		Assert.assertEquals(reply, "Classroom made.");
+	}
+	
+	@Test
+	public void getAllTest() {
+		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
+		List<Classroom> rooms = new ArrayList<Classroom>();
+		rooms.add(new Classroom("Alice"));
+		Mockito.when(query.getResultList()).thenReturn(rooms);
+		Assert.assertEquals(MOCK_ARRAY, repo.getAllClassrooms());	
 		
+	}
+	
+	@Test
+	public void testDeleteRoom() {
+		String reply = repo.deleteClassroom(1L);
+		Assert.assertEquals(reply, "{\"message\": \"movie sucessfully deleted\"}");
 	}
 
 }
