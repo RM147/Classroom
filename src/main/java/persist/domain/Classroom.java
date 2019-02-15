@@ -19,8 +19,8 @@ public class Classroom {
 
 	private String trainer;
 
-	//@OneToMany(mappedBy = "ClassroomID", fetch = FetchType.EAGER)
-	//private List<Trainee> trainees;
+	@OneToMany(mappedBy = "trainee", fetch = FetchType.EAGER)
+	private List<Trainee> trainees;
 
 	public Classroom() {
 
