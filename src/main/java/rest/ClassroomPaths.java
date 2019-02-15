@@ -12,6 +12,7 @@ import javax.ws.rs.Produces;
 import org.apache.log4j.Logger;
 
 import business.service.ClassroomService;
+import business.service.ServiceImpl;
 
 @Path("/classrooms")
 public class ClassroomPaths {
@@ -22,8 +23,15 @@ public class ClassroomPaths {
 	@Path("/getAllRooms")
 	@GET
 	@Produces({ "application/json" })
-	public String getAllMovies() {
+	public String getAllClassrooms() {
 		return service.getAllClassrooms();
+	}
+	
+	@Path("/getAllTrainees")
+	@GET
+	@Produces({ "application/json" })
+	public String getAllTrainees() {
+		return service.getAllTrainees();
 	}
 	
 	@Path("/addRoom")
@@ -40,8 +48,12 @@ public class ClassroomPaths {
 		return service.deleteClassroom(id);
 	}
 
-	public void setService(ClassroomService service) {
-		this.service = service;
+	public void setService(ClassroomService service2) {
+		this.service = service2;
+		
 	}
+
+	
+	
 
 }

@@ -8,5 +8,6 @@ public interface ServiceImpl {
 	String updateClassroom(Classroom room, String name);
 	String deleteClassroom(Long id);
 	String makeClassroom(String classroom);
+	String getAllTrainees();
 
 }

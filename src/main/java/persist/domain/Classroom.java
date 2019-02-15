@@ -15,7 +15,7 @@ public class Classroom {
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	private Long ClassroomID;
+	private Long classroomID;
 
 	private String trainer;
 
@@ -31,11 +31,11 @@ public class Classroom {
 	}
 
 	public Long getClassroomID() {
-		return ClassroomID;
+		return classroomID;
 	}
 
 	public void setClassroomID(Long classroomID) {
-		ClassroomID = classroomID;
+		classroomID = classroomID;
 	}
 
 	public String getTrainer() {

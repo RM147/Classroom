@@ -75,4 +75,12 @@ public class ClassroomDBRepo implements ClassroomRepo {
 		return "Classroom could not be deleted";
 	}
 
+	@Override
+	public String getAllTrainees() {
+		Query query = manager.createQuery("Select t FROM Trainee t");
+		Collection<Trainee> trainees = (Collection<Trainee>) query.getResultList();
+
+		return util.getJSONForObject(trainees);
+	}
+
 }

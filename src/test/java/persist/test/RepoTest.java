@@ -37,9 +37,9 @@ public class RepoTest {
 	private JSONUtil util;
 	
 	private static final String MOCK_OBJECT = "{\"trainer\":\"Alice\"}";
-	private static final String MOCK_OBJECT2 = "{\"classroomID\":\1\"\"trainer\":\"Alice\"}";
+	private static final String MOCK_OBJECT2 = "{\"traineeName\":\"Alice\"}";
 	private static final String MOCK_ARRAY = "[{\"trainer\":\"Alice\"}]";
-	private static final String MOCK_ARRAY2 = "[{\"classroomID\":\1\"\"trainer\":\"Alice\"}]";
+	private static final String MOCK_ARRAY2 = "[{\"traineeName\":\"Alice\"}]";
 	
 	@Before
 	public void setup() {
@@ -55,12 +55,22 @@ public class RepoTest {
 	}
 	
 	@Test
-	public void getAllTest() {
+	public void getAllRoomTest() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Classroom> rooms = new ArrayList<Classroom>();
 		rooms.add(new Classroom("Alice"));
 		Mockito.when(query.getResultList()).thenReturn(rooms);
 		Assert.assertEquals(MOCK_ARRAY, repo.getAllClassrooms());	
+		
+	}
+	
+	@Test
+	public void getAllTraineeTest() {
+		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
+		List<Trainee> rooms = new ArrayList<Trainee>();
+		rooms.add(new Trainee("Alice"));
+		Mockito.when(query.getResultList()).thenReturn(rooms);
+		Assert.assertEquals(MOCK_ARRAY2, repo.getAllClassrooms());	
 		
 	}
 	
