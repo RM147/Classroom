@@ -60,17 +60,19 @@ public class ClassroomDBRepo implements ClassroomRepo {
 		return util.getJSONForObject(movies);
 	}
 
-	public String updateClassroom() {
+	public String updateClassroom(Classroom room, String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public String deleteClassroom(Long id) {
+		
 		if (manager.contains(manager.find(Classroom.class, id))) {
-
+			
 			manager.remove(manager.find(Classroom.class, id));
+			return "{\"message\": \"classroom sucessfully deleted\"}";
 		}
-		return "{\"message\": \"movie sucessfully deleted\"}";
+		return "Classroom could not be deleted";
 	}
 
 }

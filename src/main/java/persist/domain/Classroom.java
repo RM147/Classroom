@@ -19,8 +19,8 @@ public class Classroom {
 
 	private String trainer;
 
-	@OneToMany(mappedBy = "ClassroomID", fetch = FetchType.EAGER)
-	private List<Trainee> trainees;
+	//@OneToMany(mappedBy = "ClassroomID", fetch = FetchType.EAGER)
+	//private List<Trainee> trainees;
 
 	public Classroom() {
 
@@ -46,12 +46,12 @@ public class Classroom {
 		this.trainer = trainer;
 	}
 
-	public List<Trainee> getTrainees() {
-		return trainees;
-	}
-
-	public void setTrainees(List<Trainee> trainees) {
-		this.trainees = trainees;
-	}
+//	public List<Trainee> getTrainees() {
+//		return trainees;
+//	}
+//
+//	public void setTrainees(List<Trainee> trainees) {
+//		this.trainees = trainees;
+//	}
 
 }

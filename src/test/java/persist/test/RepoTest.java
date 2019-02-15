@@ -37,7 +37,9 @@ public class RepoTest {
 	private JSONUtil util;
 	
 	private static final String MOCK_OBJECT = "{\"trainer\":\"Alice\"}";
+	private static final String MOCK_OBJECT2 = "{\"classroomID\":\1\"\"trainer\":\"Alice\"}";
 	private static final String MOCK_ARRAY = "[{\"trainer\":\"Alice\"}]";
+	private static final String MOCK_ARRAY2 = "[{\"classroomID\":\1\"\"trainer\":\"Alice\"}]";
 	
 	@Before
 	public void setup() {
@@ -64,8 +66,9 @@ public class RepoTest {
 	
 	@Test
 	public void testDeleteRoom() {
-		String reply = repo.deleteClassroom(1L);
-		Assert.assertEquals(reply, "{\"message\": \"movie sucessfully deleted\"}");
+		String reply = repo.makeClassroom(MOCK_OBJECT);
+		String reply2 = repo.deleteClassroom(1L);
+		Assert.assertEquals(reply2, "Classroom could not be deleted");
 	}
 
 }

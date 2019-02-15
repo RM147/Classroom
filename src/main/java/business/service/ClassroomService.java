@@ -1,25 +1,29 @@
 package business.service;
 
+import javax.inject.Inject;
+
+import persist.domain.Classroom;
+import persist.repo.ClassroomRepo;
+
 public class ClassroomService implements ServiceImpl{
+	
+	@Inject
+	private ClassroomRepo repo;
 
 	public String getAllClassrooms() {
-		// TODO Auto-generated method stub
-		return null;
+		return repo.getAllClassrooms();
 	}
 
-	public String updateClassroom() {
-		// TODO Auto-generated method stub
-		return null;
+	public String updateClassroom(Classroom room, String name) {
+		return repo.updateClassroom(room, name);
 	}
 
-	public String deleteClassroom() {
-		// TODO Auto-generated method stub
-		return null;
+	public String deleteClassroom(Long id) {
+		return repo.deleteClassroom(id);
 	}
 
 	public String makeClassroom(String classroom) {
-		// TODO Auto-generated method stub
-		return null;
+		return repo.makeClassroom(classroom);
 	}
 
 }
