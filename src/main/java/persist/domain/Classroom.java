@@ -14,6 +14,7 @@ import javax.validation.constraints.Size;
 public class Classroom {
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
 	private Long ClassroomID;
 
 	private String trainer;

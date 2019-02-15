@@ -40,9 +40,10 @@ public class ClassroomDBRepo implements ClassroomRepo {
 
 	@Transactional(REQUIRED)
 	public String addTrainee(Classroom room, String name) {
-		Trainee aTrainee = new Trainee(name);
-		System.out.println(room.getTrainees());
-		room.getTrainees().add(aTrainee);
+		Trainee aTrainee =  new Trainee("Josh");
+		System.out.println(util.getJSONForObject(aTrainee));
+		//Trainee aTrainee = util.getObjectForJSON(name, Trainee.class);
+		//room.getTrainees().add(aTrainee);
 		return aTrainee.getTraineeName() + " has been added.";
 	}
 

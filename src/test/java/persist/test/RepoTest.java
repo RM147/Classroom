@@ -43,7 +43,7 @@ public class RepoTest {
 	@Test
 	public void addTraineeTest() {
 		Classroom room = new Classroom("Jenny");
-		assertEquals("Josh has been added", repo.addTrainee(room, "Josh"));
+		assertEquals("Josh has been added.", repo.addTrainee(room, "Josh"));
 		
 	}
 

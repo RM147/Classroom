@@ -1,10 +1,16 @@
 package persist.domain;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 public class Trainee {
+	
 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
 	private Long traineeID;
 	private String traineeName;
 	@ManyToOne
