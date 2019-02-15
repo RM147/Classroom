@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 
 import business.service.ClassroomService;
 import business.service.ServiceImpl;
+import persist.domain.Classroom;
 
 @Path("/classrooms")
 public class ClassroomPaths {
@@ -53,6 +54,13 @@ public class ClassroomPaths {
 	@Produces({ "application/json" })
 	public String deleteTrainee(@PathParam("id") Long id) {
 		return service.delTrainee(id);
+	}
+	
+	@Path("/addTrainee")
+	@POST
+	@Produces({ "application/json" })
+	public String addTrainee(Classroom room, String name) {
+		return service.addTrainee(room, name);
 	}
 
 	public void setService(ClassroomService service2) {

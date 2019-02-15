@@ -3,6 +3,7 @@ package business.service;
 import javax.inject.Inject;
 
 import persist.domain.Classroom;
+import persist.domain.Trainee;
 import persist.repo.ClassroomRepo;
 
 public class ClassroomService implements ServiceImpl{
@@ -34,6 +35,11 @@ public class ClassroomService implements ServiceImpl{
 	@Override
 	public String delTrainee(Long id) {
 		return repo.delTrainee(id);
+	}
+
+	@Override
+	public String addTrainee(Classroom room, String name) {
+		return repo.addTrainee(room, name);
 	}
 
 }

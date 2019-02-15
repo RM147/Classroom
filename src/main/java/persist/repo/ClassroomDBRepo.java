@@ -93,4 +93,10 @@ if (manager.contains(manager.find(Trainee.class, id))) {
 		return "Trainee could not be deleted";
 	}
 
+	@Override
+	public String addTrainee(Classroom room, String name) {
+		new Trainee(room, name);
+		return name + " has been added.";
+	}
+
 }
